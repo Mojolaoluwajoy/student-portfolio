@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A JavaScript study planner for tracking assignments.">
+  <title>Study Planner | [Your Name]</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">[Your Name]</a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="planner.html" class="active">Planner</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1 class="page-title">Study planner</h1>
+    <p>Add your assignments and tick them off as you finish. Your list is saved in this browser.</p>
+
+    <div class="planner-layout">
+      <form id="planner-form" class="form" novalidate>
+        <div class="form-group">
+          <label for="task-title">Task</label>
+          <input type="text" id="task-title" placeholder="e.g. COS 106 assignment 2">
+          <p class="error-msg" id="task-title-error"></p>
+        </div>
+        <div class="form-group">
+          <label for="task-course">Course</label>
+          <input type="text" id="task-course" placeholder="e.g. COS 106">
+        </div>
+        <div class="form-group">
+          <label for="task-due">Due date</label>
+          <input type="date" id="task-due">
+        </div>
+        <div class="form-group">
+          <label for="task-priority">Priority</label>
+          <select id="task-priority">
+            <option value="low">Low</option>
+            <option value="medium" selected>Medium</option>
+            <option value="high">High</option>
+          </select>
+        </div>
+        <button type="submit" class="btn">Add task</button>
+      </form>
+
+      <section>
+        <div class="planner-stats">
+          <div class="stat"><strong id="stat-total">0</strong>Total</div>
+          <div class="stat"><strong id="stat-done">0</strong>Done</div>
+          <div class="stat"><strong id="stat-left">0</strong>Remaining</div>
+        </div>
+        <p id="empty-state" class="empty-state">No tasks yet. Add one using the form.</p>
+        <ul id="task-list" class="task-list"></ul>
+        <button type="button" id="clear-done" class="btn">Clear completed</button>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> [Your Name] &middot; COS 106 Portfolio Project</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

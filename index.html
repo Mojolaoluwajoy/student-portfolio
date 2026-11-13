@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Personal portfolio of [Your Name], a Computer Science student.">
+  <title>Home | [Your Name]</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">[Your Name]</a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="planner.html">Planner</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div>
+        <p>Welcome to my portfolio! I'm</p>
+        <h1>[Your Name]</h1>
+        <p>[Year] Computer Science student at MIVA Open University. Here you'll find my profile, skills, projects and the tools I use to manage my studies.</p>
+        <a href="projects.html" class="btn">View my projects</a>
+        <a href="contact.html" class="btn btn-outline">Contact me</a>
+      </div>
+      <img src="images/profile.svg" alt="Photo of [Your Name]">
+    </div>
+  </section>
+
+  <main class="container">
+    <section class="section">
+      <h2>A little about me</h2>
+      <p>[Brief biography, 3–4 sentences: where you're from, why you chose Computer Science, what you enjoy building, and what you're working towards.]</p>
+    </section>
+
+    <section class="section">
+      <h2>What you'll find here</h2>
+      <div class="grid">
+        <article class="card">
+          <div class="card-body">
+            <h3>About me</h3>
+            <p>My background, skills and the courses I'm taking this semester.</p>
+            <a href="about.html">Read more &rarr;</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-body">
+            <h3>Projects</h3>
+            <p>A selection of coursework and personal projects.</p>
+            <a href="projects.html">See projects &rarr;</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-body">
+            <h3>Study planner</h3>
+            <p>A small JavaScript tool I built to keep track of assignments.</p>
+            <a href="planner.html">Try it &rarr;</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> [Your Name] &middot; COS 106 Portfolio Project</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
