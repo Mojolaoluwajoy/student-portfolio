@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="600" height="340" viewBox="0 0 600 340">
-<rect width="600" height="340" fill="#264653"/>
+<rect width="600" height="340" fill="#4a0f24"/>
 <circle cx="520" cy="60" r="110" fill="#fff" opacity="0.08"/><circle cx="70" cy="300" r="90" fill="#fff" opacity="0.08"/>
 <text x="300" y="165" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700" text-anchor="middle" fill="#fff">GPS Device Simulator</text>
-<text x="300" y="210" font-family="Segoe UI, Arial, sans-serif" font-size="20" text-anchor="middle" fill="#fff" opacity="0.85">Codec 8 · TCP · Traccar</text>
+<text x="300" y="210" font-family="Segoe UI, Arial, sans-serif" font-size="20" text-anchor="middle" fill="#e3c35a">Codec 8 · TCP · Traccar</text>
 </svg>
