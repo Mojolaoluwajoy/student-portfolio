@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Projects by [Your Name].">
-  <title>Projects | [Your Name]</title>
+  <meta name="description" content="Projects by Adebola Mojolaoluwa Joy.">
+  <title>Projects | Adebola Mojolaoluwa Joy</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <header class="site-header">
     <div class="container">
-      <a href="index.html" class="logo">[Your Name]</a>
+      <a href="index.html" class="logo">Adebola Mojolaoluwa Joy</a>
       <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">&#9776;</button>
       <nav>
         <ul class="nav-links">
@@ -26,46 +26,66 @@
 
   <main class="container">
     <h1 class="page-title">My projects</h1>
-    <p>[One sentence introducing your work.]</p>
+    <p>A selection of systems I have built, mostly secure backend services for fintech, plus the JavaScript planner on this site.</p>
 
     <section class="section grid">
       <article class="card">
-        <img src="images/project-placeholder.svg" alt="Screenshot of the portfolio website">
+        <img src="images/project-cib.svg" alt="Corporate Internet Banking project banner">
         <div class="card-body">
-          <h3>Personal portfolio</h3>
-          <p>This website: five pages, one shared stylesheet, a responsive layout and JavaScript features.</p>
+          <h3>Corporate Internet Banking</h3>
+          <p>A multi-tenant banking backend where each organisation has admin, maker and approver roles, with two-step approval for transfers. It gives every organisation a real Nigerian account number through Paystack virtual accounts, and supports payouts and multi-currency transfers.</p>
+          <span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">PostgreSQL</span><span class="tag">JWT</span><span class="tag">Paystack</span>
+          <p><a href="https://github.com/Mojolaoluwajoy/cib-backend" target="_blank" rel="noopener">View on GitHub &rarr;</a></p>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="images/project-thrift.svg" alt="Thrift Cooperative Management System project banner">
+        <div class="card-body">
+          <h3>Thrift Cooperative System (Ajo/Esusu)</h3>
+          <p>A system for running rotating savings groups, with member, admin and super admin roles and payouts ordered by join sequence. Payments go through Paystack and are confirmed by webhooks, and a React dashboard shows groups, contributions and payouts.</p>
+          <span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">MongoDB</span><span class="tag">React</span>
+          <p><a href="https://github.com/Mojolaoluwajoy/thriftSystem-backend" target="_blank" rel="noopener">View on GitHub &rarr;</a></p>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="images/project-transfer.svg" alt="Transfer Processing Service project banner">
+        <div class="card-body">
+          <h3>Transfer Processing Service</h3>
+          <p>A money transfer service that never debits a customer twice, even when requests are repeated, the network times out or the server crashes. It uses idempotency keys, a transactional outbox with RabbitMQ, and a recovery job for unfinished transfers.</p>
+          <span class="tag">Java 21</span><span class="tag">Spring Boot</span><span class="tag">PostgreSQL</span><span class="tag">RabbitMQ</span>
+          <p><a href="https://github.com/Mojolaoluwajoy/transfer-processing-service" target="_blank" rel="noopener">View on GitHub &rarr;</a></p>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="images/project-ledger.svg" alt="Account Ledger project banner">
+        <div class="card-body">
+          <h3>Account Ledger: Core Banking Microservices</h3>
+          <p>Banking microservices for clients, savings and fixed deposits behind one API gateway. Every movement of money is recorded in a double-entry ledger, interest is calculated nightly, and customers are synced to Apache Fineract.</p>
+          <span class="tag">Java</span><span class="tag">Microservices</span><span class="tag">Flyway</span><span class="tag">Fineract</span>
+          <p><a href="https://github.com/Mojolaoluwajoy/account-ledger" target="_blank" rel="noopener">View on GitHub &rarr;</a></p>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="images/project-gps.svg" alt="GPS Device Simulator project banner">
+        <div class="card-body">
+          <h3>GPS Device Simulator</h3>
+          <p>A Java program that behaves like a real Teltonika GPS tracker, sending Codec 8 binary packets over TCP to a Traccar server. It was used to test a live vehicle-tracking pipeline for a fleet platform.</p>
+          <span class="tag">Java</span><span class="tag">TCP Sockets</span><span class="tag">Traccar</span>
+          <p><a href="https://github.com/Mojolaoluwajoy/traccarSimulator" target="_blank" rel="noopener">View on GitHub &rarr;</a></p>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="images/project-planner.svg" alt="Academic Planner project banner">
+        <div class="card-body">
+          <h3>Academic Planner</h3>
+          <p>Built for this site: add, complete and delete study tasks. Written in plain JavaScript using arrays, functions and DOM manipulation, with tasks saved in the browser.</p>
           <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
-          <p><a href="https://github.com/your-username/student-portfolio">View code on GitHub &rarr;</a></p>
-        </div>
-      </article>
-
-      <article class="card">
-        <img src="images/project-placeholder.svg" alt="Screenshot of the study planner">
-        <div class="card-body">
-          <h3>Study planner</h3>
-          <p>Add, tick off and delete assignments. Tasks are saved in the browser with localStorage.</p>
-          <span class="tag">JavaScript</span><span class="tag">DOM</span>
           <p><a href="planner.html">Open the planner &rarr;</a></p>
-        </div>
-      </article>
-
-      <article class="card">
-        <img src="images/project-placeholder.svg" alt="Screenshot of [Project 3]">
-        <div class="card-body">
-          <h3>[Project 3 name]</h3>
-          <p>[What it does and what you learned building it.]</p>
-          <span class="tag">[Tech]</span><span class="tag">[Tech]</span>
-          <p><a href="#">View project &rarr;</a> (simulated link)</p>
-        </div>
-      </article>
-
-      <article class="card">
-        <img src="images/project-placeholder.svg" alt="Screenshot of [Project 4]">
-        <div class="card-body">
-          <h3>[Project 4 name]</h3>
-          <p>[What it does and what you learned building it.]</p>
-          <span class="tag">[Tech]</span><span class="tag">[Tech]</span>
-          <p><a href="#">View project &rarr;</a> (simulated link)</p>
         </div>
       </article>
     </section>
@@ -73,7 +93,7 @@
 
   <footer class="site-footer">
     <div class="container">
-      <p>&copy; <span id="year"></span> [Your Name] &middot; COS 106 Portfolio Project</p>
+      <p>&copy; <span id="year"></span> Adebola Mojolaoluwa Joy &middot; COS 106 Portfolio Project</p>
     </div>
   </footer>
 
