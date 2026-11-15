@@ -7,6 +7,8 @@
 
 A responsive, multi-page personal portfolio and academic planner built with plain HTML, CSS and JavaScript (no frameworks), and hosted on GitHub Pages.
 
+Full project documentation with screenshots: [docs/DOCUMENTATION.md](docs/DOCUMENTATION.md)
+
 ## Pages
 
 | Page | File | What it contains |
