@@ -2,9 +2,11 @@
    Student Portfolio — shared JavaScript (used by every page)
    1. Mobile menu   2. Footer year   3. Contact form checks
    4. Study planner (saved in the browser with localStorage)
+   5. Light / dark mode toggle
    ========================================================== */
 
 document.addEventListener("DOMContentLoaded", function () {
+  setupThemeToggle();
   setupMobileMenu();
   setFooterYear();
   setupContactForm();
@@ -226,4 +228,38 @@ function renderTasks(tasks) {
   document.getElementById("stat-done").textContent = doneCount;
   document.getElementById("stat-left").textContent = tasks.length - doneCount;
   document.getElementById("empty-state").classList.toggle("hidden", tasks.length > 0);
+}
+
+/* ---------- 5. Light / dark mode toggle ---------- */
+function setupThemeToggle() {
+  var button = document.querySelector(".theme-toggle");
+  if (!button) return;
+  var root = document.documentElement;
+
+  // The theme on screen: the one the visitor picked, otherwise their device setting
+  function currentTheme() {
+    var picked = root.getAttribute("data-theme");
+    if (picked) return picked;
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
+
+  // Show a moon in light mode (click for dark) and a sun in dark mode (click for light)
+  function updateButton() {
+    var dark = currentTheme() === "dark";
+    button.innerHTML = dark ? "&#9728;&#65039;" : "&#127769;";
+    button.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+  }
+
+  button.addEventListener("click", function () {
+    var next = currentTheme() === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try {
+      localStorage.setItem("theme", next);
+    } catch (e) {
+      /* storage unavailable — the theme still changes for this page */
+    }
+    updateButton();
+  });
+
+  updateButton();
 }

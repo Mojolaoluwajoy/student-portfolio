@@ -17,6 +17,56 @@
   --radius: 10px;
   --shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
   --max-width: 1100px;
+
+  /* colours that change between light and dark mode */
+  --heading: var(--primary-dark);
+  --link: var(--primary);
+  --header-bg: var(--primary-dark);
+  --tag-bg: #f6e9ee;
+  --input-bg: #ffffff;
+  --success-bg: #e3f4f1;
+  color-scheme: light;
+}
+
+/* ---------- 1b. Dark mode ----------
+   Used when the visitor picks dark with the toggle button,
+   or when their device is set to dark mode and they haven't picked a theme. */
+:root[data-theme="dark"] {
+  --bg: #15161a;
+  --surface: #202228;
+  --text: #e8e6e3;
+  --muted: #a5abb5;
+  --border: #363a44;
+  --success: #4cc9b8;
+  --error: #ff7b6b;
+  --shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+  --heading: #f2c6d5;
+  --link: #eba4bc;
+  --header-bg: #22080f;
+  --tag-bg: #3b1c28;
+  --input-bg: #15161a;
+  --success-bg: #12332f;
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #15161a;
+    --surface: #202228;
+    --text: #e8e6e3;
+    --muted: #a5abb5;
+    --border: #363a44;
+    --success: #4cc9b8;
+    --error: #ff7b6b;
+    --shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+    --heading: #f2c6d5;
+    --link: #eba4bc;
+    --header-bg: #22080f;
+    --tag-bg: #3b1c28;
+    --input-bg: #15161a;
+    --success-bg: #12332f;
+    color-scheme: dark;
+  }
 }
 
 /* ---------- 2. Reset + base ---------- */
@@ -32,6 +82,7 @@ body {
   line-height: 1.6;
   color: var(--text);
   background: var(--bg);
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 img,
@@ -46,14 +97,14 @@ button {
 }
 
 a {
-  color: var(--primary);
+  color: var(--link);
 }
 
 h1,
 h2,
 h3 {
   line-height: 1.25;
-  color: var(--primary-dark);
+  color: var(--heading);
 }
 
 .container {
@@ -65,7 +116,7 @@ h3 {
 
 /* ---------- 3. Header + navigation ---------- */
 .site-header {
-  background: var(--primary-dark);
+  background: var(--header-bg);
   color: #fff;
   position: sticky;
   top: 0;
@@ -75,11 +126,29 @@ h3 {
 .site-header .container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 8px;
   min-height: 64px;
 }
 
+/* Light/dark mode button (sits after the menu on wide screens) */
+.theme-toggle {
+  order: 1;
+  background: none;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 6px;
+  font-size: 1.1rem;
+  line-height: 1;
+  padding: 6px 8px;
+  cursor: pointer;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus {
+  background: rgba(255, 255, 255, 0.15);
+}
+
 .logo {
+  margin-right: auto;
   color: #fff;
   font-weight: 700;
   font-size: 1.25rem;
@@ -218,8 +287,8 @@ main {
 
 .tag {
   display: inline-block;
-  background: #f6e9ee;
-  color: var(--primary);
+  background: var(--tag-bg);
+  color: var(--link);
   font-size: 0.8rem;
   padding: 2px 10px;
   border-radius: 20px;
@@ -300,14 +369,15 @@ textarea {
   font: inherit;
   border: 1px solid var(--border);
   border-radius: 6px;
-  background: #fff;
+  background: var(--input-bg);
+  color: var(--text);
 }
 
 input:focus,
 select:focus,
 textarea:focus {
-  outline: 2px solid var(--primary);
-  border-color: var(--primary);
+  outline: 2px solid var(--link);
+  border-color: var(--link);
 }
 
 .invalid {
@@ -322,7 +392,7 @@ textarea:focus {
 }
 
 .success-msg {
-  background: #e3f4f1;
+  background: var(--success-bg);
   color: var(--success);
   padding: 12px;
   border-radius: 6px;
@@ -358,7 +428,7 @@ textarea:focus {
 .stat strong {
   display: block;
   font-size: 1.5rem;
-  color: var(--primary);
+  color: var(--link);
 }
 
 .task-list {
@@ -423,7 +493,7 @@ textarea:focus {
 
 /* ---------- 9. Footer ---------- */
 .site-footer {
-  background: var(--primary-dark);
+  background: var(--header-bg);
   color: #ead9df;
   text-align: center;
   padding: 24px 0;
@@ -496,6 +566,10 @@ main {
     display: block;
   }
 
+  .theme-toggle {
+    order: 0;
+  }
+
   .nav-links {
     display: flex;
     position: absolute;
@@ -503,7 +577,7 @@ main {
     left: 0;
     right: 0;
     flex-direction: column;
-    background: var(--primary-dark);
+    background: var(--header-bg);
     padding: 8px 16px 16px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     opacity: 0;

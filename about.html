@@ -6,11 +6,16 @@
   <meta name="description" content="About Adebola Mojolaoluwa Joy: education, career goals, skills and interests.">
   <title>About | Adebola Mojolaoluwa Joy</title>
   <link rel="stylesheet" href="css/style.css">
+  <script>
+    // Apply the saved theme before the page is drawn, so it never flashes the wrong colours
+    try { var t = localStorage.getItem("theme"); if (t) document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+  </script>
 </head>
 <body>
   <header class="site-header">
     <div class="container">
       <a href="index.html" class="logo">Adebola Mojolaoluwa Joy</a>
+      <button class="theme-toggle" type="button" aria-label="Switch to dark mode">&#127769;</button>
       <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">&#9776;</button>
       <nav>
         <ul class="nav-links">

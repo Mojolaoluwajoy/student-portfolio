@@ -2,7 +2,7 @@
 
 **Course:** COS 106 – Introduction to Web Technologies (Practical Term Project)
 **Author:** Adebola Mojolaoluwa Joy · B.Sc. Software Engineering, MIVA Open University
-**Live site:** https://mojolaoluwajoy.github.io/student-portfolio/
+**Live site:** https://mojolaoluwajoy.vercel.app (also on GitHub Pages: https://mojolaoluwajoy.github.io/student-portfolio/)
 **Source code:** https://github.com/Mojolaoluwajoy/student-portfolio
 
 > The [README](../README.md) gives a quick overview. This document explains in detail **what** the website does, **how** it is built, and shows each feature working with screenshots.
@@ -21,11 +21,12 @@
    - [Study Planner](#44-study-planner-plannerhtml)
    - [Contact](#45-contact-page-contacthtml)
 5. [Responsive design and mobile menu](#5-responsive-design-and-mobile-menu)
-6. [How it works: HTML](#6-how-it-works-html)
-7. [How it works: CSS](#7-how-it-works-css)
-8. [How it works: JavaScript](#8-how-it-works-javascript)
-9. [Running, testing and deploying](#9-running-testing-and-deploying)
-10. [Limitations and future improvements](#10-limitations-and-future-improvements)
+6. [Light and dark mode](#6-light-and-dark-mode)
+7. [How it works: HTML](#7-how-it-works-html)
+8. [How it works: CSS](#8-how-it-works-css)
+9. [How it works: JavaScript](#9-how-it-works-javascript)
+10. [Running, testing and deploying](#10-running-testing-and-deploying)
+11. [Limitations and future improvements](#11-limitations-and-future-improvements)
 
 ---
 
@@ -47,6 +48,7 @@ The site is built with **plain HTML, CSS and JavaScript only**. It uses no frame
 | Show CSS skills | One shared stylesheet with variables, Flexbox, Grid, transitions, keyframe animations and media queries |
 | Show JavaScript skills | Form validation, DOM manipulation, event handling, arrays of objects and `localStorage` |
 | Work on every device | Responsive layout plus a ☰ menu on small screens |
+| Comfortable to read day or night | Light and dark themes with a toggle button |
 
 ---
 
@@ -90,7 +92,7 @@ student-portfolio/
 └── README.md           Short overview
 ```
 
-**Design decision: one CSS file and one JS file for all pages.** Every page links the same `css/style.css` and `js/main.js`. The header, footer and colours stay identical everywhere and only need to be changed in one place. The script checks which elements exist on the current page and only runs the parts that apply (see [section 8](#8-how-it-works-javascript)).
+**Design decision: one CSS file and one JS file for all pages.** Every page links the same `css/style.css` and `js/main.js`. The header, footer and colours stay identical everywhere and only need to be changed in one place. The script checks which elements exist on the current page and only runs the parts that apply (see [section 9](#9-how-it-works-javascript)).
 
 ---
 
@@ -98,7 +100,7 @@ student-portfolio/
 
 Every page shares the same layout:
 
-- a **header** with the author's name (which links back to Home) and the navigation menu, with the current page highlighted in gold;
+- a **header** with the author's name (which links back to Home), the navigation menu with the current page highlighted in gold, and a 🌙/☀️ button for switching between light and dark mode;
 - the page's **main content**;
 - a **footer** with a copyright line whose year is filled in automatically by JavaScript.
 
@@ -258,7 +260,31 @@ The site adapts to the screen size using two CSS **media queries**:
 
 ---
 
-## 6. How it works: HTML
+## 6. Light and dark mode
+
+Every page has a **🌙 / ☀️ button** in the header. In light mode it shows a moon (click it to switch to dark); in dark mode it shows a sun (click it to switch back).
+
+| Dark mode: Home | Dark mode: Study Planner |
+|---|---|
+| ![Home page in dark mode](screenshots/14-dark-home.png) | ![Planner in dark mode](screenshots/15-dark-planner.png) |
+
+The dark theme keeps the same maroon and gold identity: backgrounds become near-black, cards become dark grey, text becomes light, and headings and links turn a soft pink so they stay readable. On phones the button sits next to the ☰ menu:
+
+![Dark mode on a phone](screenshots/16-dark-mobile-menu.png)
+
+**How it decides which theme to show**
+1. If the visitor has clicked the button before, their choice is used. It is saved in `localStorage` under the key `theme`, so it applies on every page and on later visits.
+2. If they have never clicked it, the site follows their device: phones and computers set to dark mode get the dark theme automatically.
+
+**How it works**
+- All colours are CSS variables (see [section 8](#8-how-it-works-css)). Dark mode simply gives those variables different values, so no other CSS had to be duplicated.
+- Clicking the button sets `data-theme="dark"` or `data-theme="light"` on the `<html>` element, and the CSS rule `:root[data-theme="dark"]` swaps the colours.
+- A tiny script in each page's `<head>` applies the saved theme *before* the page is drawn, so a dark-mode visitor never sees a flash of the light theme while the page loads.
+- `color-scheme: dark` tells the browser to draw its own controls (date picker, checkboxes, dropdowns) in dark colours too.
+
+---
+
+## 7. How it works: HTML
 
 | Requirement | Where it is used |
 |---|---|
@@ -278,13 +304,14 @@ The site adapts to the screen size using two CSS **media queries**:
 
 ---
 
-## 7. How it works: CSS
+## 8. How it works: CSS
 
 `css/style.css` is divided into 11 numbered sections:
 
 | # | Section | Purpose |
 |---|---|---|
 | 1 | Colour + spacing variables | The whole colour scheme defined once in `:root` |
+| 1b | Dark mode | Dark values for the same colour variables |
 | 2 | Reset + base | `box-sizing`, fonts, default link and heading colours |
 | 3 | Header + navigation | Sticky header, nav links, active-page highlight |
 | 4 | Hero | Home page banner |
@@ -309,6 +336,8 @@ All colours are **CSS variables**, so changing a value in `:root` changes it acr
 | `--success` | `#2a9d8f` (green) | Success message, low priority |
 | `--error` | `#c0392b` (red) | Error messages, high priority |
 
+In dark mode these variables are given darker or lighter values (for example the background becomes `#15161a` and headings become `#f2c6d5`), so the whole site switches theme without any other changes.
+
 ### Layout
 - **Flexbox:** header (logo left, links right), hero (text and photo), planner counters, task rows.
 - **CSS Grid:** project and home cards (`auto-fit`), About layout (`280px 1fr`), Planner layout (`340px 1fr`).
@@ -327,12 +356,13 @@ For users who have turned off animations in their operating system, `@media (pre
 
 ---
 
-## 8. How it works: JavaScript
+## 9. How it works: JavaScript
 
-All behaviour lives in `js/main.js`. When a page finishes loading, it runs four setup functions:
+All behaviour lives in `js/main.js`. When a page finishes loading, it runs five setup functions:
 
 ```js
 document.addEventListener("DOMContentLoaded", function () {
+  setupThemeToggle();
   setupMobileMenu();
   setFooterYear();
   setupContactForm();
@@ -342,10 +372,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 Each function first checks that the elements it needs are on the page. If they are not, it stops (`if (!form) return;`). This is how one script can serve all five pages safely.
 
-### 8.1 Functions
+(The one exception is a two-line script in each page's `<head>` that applies the saved theme before the page appears; see [section 6](#6-light-and-dark-mode).)
+
+### 9.1 Functions
 
 | Function | What it does |
 |---|---|
+| `setupThemeToggle()` | Switches between light and dark mode, saves the choice and updates the 🌙/☀️ icon |
 | `setupMobileMenu()` | Opens/closes the ☰ menu; closes it on link click, outside click or Escape |
 | `setFooterYear()` | Writes the current year into the footer |
 | `setupContactForm()` | Validates the contact form on submit |
@@ -354,7 +387,7 @@ Each function first checks that the elements it needs are on the page. If they a
 | `loadTasks()` / `saveTasks(tasks)` | Read and write the task array to `localStorage` |
 | `renderTasks(tasks)` | Rebuilds the task list and counters from the array |
 
-### 8.2 Contact form validation flow
+### 9.2 Contact form validation flow
 
 ```
 User clicks "Send message"
@@ -377,7 +410,7 @@ All valid ──► show green success message and reset the form
 
 All rules are checked on every submit, so the user sees every problem at once instead of one at a time.
 
-### 8.3 Planner data model
+### 9.3 Planner data model
 
 Tasks are kept in an **array of objects**. Each task looks like this:
 
@@ -394,7 +427,7 @@ Tasks are kept in an **array of objects**. Each task looks like this:
 
 The whole array is saved as JSON under the `localStorage` key **`studyPlannerTasks`**.
 
-### 8.4 Planner update cycle
+### 9.4 Planner update cycle
 
 Every action follows the same three steps: **change the array, save it, redraw the list.**
 
@@ -422,7 +455,7 @@ Implementation details:
 
 ---
 
-## 9. Running, testing and deploying
+## 10. Running, testing and deploying
 
 ### Run locally
 No installation is needed.
@@ -448,13 +481,15 @@ No installation is needed.
 | 10 | Click × / Clear completed | Task(s) removed; counters update |
 | 11 | Narrow the window below 640 px | ☰ button appears; menu opens and closes |
 | 12 | Play the video on the About page | Planner demo plays with controls |
+| 13 | Click the 🌙 button | Site switches to dark mode; button shows ☀️ |
+| 14 | Go to another page, or refresh | Dark mode is still on |
 
 ### Deploy
-The site is hosted on **GitHub Pages** from the `main` branch. Pushing to `main` publishes the changes to https://mojolaoluwajoy.github.io/student-portfolio/ within a minute or two. No build step is needed.
+The site is hosted on **Vercel** (https://mojolaoluwajoy.vercel.app) and **GitHub Pages** (https://mojolaoluwajoy.github.io/student-portfolio/). Both are connected to the `main` branch on GitHub, so every push to `main` updates both sites within a minute or two. No build step is needed.
 
 ---
 
-## 10. Limitations and future improvements
+## 11. Limitations and future improvements
 
 | Current limitation | Possible improvement |
 |---|---|
@@ -462,4 +497,3 @@ The site is hosted on **GitHub Pages** from the `main` branch. Pushing to `main`
 | Planner tasks are stored only in one browser | Add user accounts and store tasks in a database so they sync across devices |
 | Planner tasks cannot be edited after they are added | Add an edit button for each task |
 | No reminders for due dates | Highlight overdue tasks and use browser notifications |
-| Light theme only | Add a dark mode using `prefers-color-scheme` and the existing CSS variables |

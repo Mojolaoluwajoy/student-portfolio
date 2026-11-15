@@ -3,9 +3,9 @@
 **COS 106 – Introduction to Web Technologies · Practical Term Project**
 **Student:** Adebola Mojolaoluwa Joy · B.Sc. Software Engineering, MIVA Open University
 
-🔗 **Live site:** https://mojolaoluwajoy.github.io/student-portfolio/
+🔗 **Live site:** https://mojolaoluwajoy.vercel.app (also on GitHub Pages: https://mojolaoluwajoy.github.io/student-portfolio/)
 
-A responsive, multi-page personal portfolio and academic planner built with plain HTML, CSS and JavaScript (no frameworks), and hosted on GitHub Pages.
+A responsive, multi-page personal portfolio and academic planner built with plain HTML, CSS and JavaScript (no frameworks), and hosted on Vercel and GitHub Pages.
 
 Full project documentation with screenshots: [docs/DOCUMENTATION.md](docs/DOCUMENTATION.md)
 
@@ -35,6 +35,7 @@ Full project documentation with screenshots: [docs/DOCUMENTATION.md](docs/DOCUME
 - **Navigation styling** with hover states and a highlighted link for the current page
 - **Animations and transitions:** page fade-in, cards that lift on hover, planner tasks that slide in
 - **Responsive, mobile-friendly design:** `@media` queries and a collapsible ☰ menu on small screens
+- **Light and dark mode:** a 🌙/☀️ toggle in the header; the choice is remembered, and the site follows the device setting by default
 
 ### JavaScript (`js/main.js`)
 - **Event handling:** clicks, form submissions, checkbox changes
