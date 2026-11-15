@@ -40,6 +40,11 @@ video {
   display: block;
 }
 
+a,
+button {
+  touch-action: manipulation;
+}
+
 a {
   color: var(--primary);
 }
@@ -435,7 +440,7 @@ textarea:focus {
 .btn,
 .card,
 .task {
-  transition: background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  transition: background-color 0.15s ease, color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .card:hover {
@@ -449,13 +454,13 @@ textarea:focus {
 
 /* Page content fades up when a page loads */
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
+  from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
 .hero .container > *,
 main {
-  animation: fadeUp 0.6s ease both;
+  animation: fadeUp 0.3s ease-out both;
 }
 
 /* New planner tasks slide in */
@@ -465,7 +470,7 @@ main {
 }
 
 .task {
-  animation: slideIn 0.3s ease;
+  animation: slideIn 0.2s ease-out;
 }
 
 /* Respect users who turn off motion in their system settings */
@@ -492,7 +497,7 @@ main {
   }
 
   .nav-links {
-    display: none;
+    display: flex;
     position: absolute;
     top: 64px;
     left: 0;
@@ -500,10 +505,17 @@ main {
     flex-direction: column;
     background: var(--primary-dark);
     padding: 8px 16px 16px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
   }
 
   .nav-links.open {
-    display: flex;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
   }
 
   .hero h1 {

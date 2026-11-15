@@ -17,9 +17,26 @@ function setupMobileMenu() {
   var links = document.querySelector(".nav-links");
   if (!toggle || !links) return;
 
-  toggle.addEventListener("click", function () {
-    var isOpen = links.classList.toggle("open");
-    toggle.setAttribute("aria-expanded", isOpen);
+  function setMenu(open) {
+    links.classList.toggle("open", open);
+    toggle.setAttribute("aria-expanded", open);
+    toggle.innerHTML = open ? "&#10005;" : "&#9776;"; // ✕ when open, ☰ when closed
+  }
+
+  toggle.addEventListener("click", function (event) {
+    event.stopPropagation();
+    setMenu(!links.classList.contains("open"));
+  });
+
+  // Close the menu when a link is tapped, when tapping outside it, or on Escape
+  links.addEventListener("click", function (event) {
+    if (event.target.closest("a")) setMenu(false);
+  });
+  document.addEventListener("click", function (event) {
+    if (!links.contains(event.target)) setMenu(false);
+  });
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") setMenu(false);
   });
 }
 
